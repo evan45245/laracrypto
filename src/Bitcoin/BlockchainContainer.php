@@ -1,6 +1,6 @@
 <?php
 
-namespace Andskur\Laracrypto\Bitcoin;
+namespace evan45245\Laracrypto\Bitcoin;
 
 /**
  * Class BlockchainContainer.
@@ -24,14 +24,15 @@ class BlockchainContainer
      */
     private $url = 'http://localhost:3000/merchant/';
 
+	private $v2 = 'http://localhost:3000/api/v2/create';
     /**
      * Construct Blockchain access from config file.
      */
     public function __construct()
     {
-        $this->guid = config('laracrypto.blockchain.guid');
-        $this->api = config('laracrypto.blockchain.api');
-        $this->pass = '?password='.config('laracrypto.blockchain.pass');
+        $this->guid = env('BLOCKCHAIN_GUID');
+        $this->api = env('BLOCKCHAIN_API');
+        $this->pass = '?password='.env('BLOCKCHAIN_PASS');
         $this->url = $this->url.$this->guid;
     }
 
@@ -40,15 +41,43 @@ class BlockchainContainer
      *
      * @return mixed json response
      */
+	 
+	 //using API code from config
     private function getJson($endpoint)
     {
-        $json_url = $this->url.$endpoint;
+        $json_url = $this->url.$endpoint.'&api_code='.$this->api;
+        $json_data = file_get_contents($json_url);
+        $json_feed = json_decode($json_data);
+
+        return $json_feed;
+    }
+	private function callApi($endpoint)
+    {
+        $json_url = $this->v2.$endpoint;
         $json_data = file_get_contents($json_url);
         $json_feed = json_decode($json_data);
 
         return $json_feed;
     }
 
+	//this function is using deprecated Blockchain wallet functionality (nonHD)!
+	public function newWallet()
+	{
+        $endpoint = $this->pass;
+        $results = $this->callApi($endpoint);
+
+        return $results;
+	}
+	
+	public function enableHD()
+	{
+		
+		$endpoint = '/new_address'.$this->pass.'&label='.$label;
+        $results = $this->getJson($endpoint);
+
+        return $results;
+	}
+	
     /**
      * Check Full Balance.
      *

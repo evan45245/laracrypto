@@ -1,5 +1,5 @@
 {
-    "name": "andskur/laracrypto",
+    "name": "evan45245/laracrypto",
     "description": "Laravel cryptocurrency integration",
     "keywords": [
         "laravel",
@@ -7,9 +7,13 @@
         "bitcoin",
         "blockchain"
     ],
-    "homepage": "https://github.com/andskur/laracrypto",
+    "homepage": "https://github.com/evan45245/laracrypto",
     "license": "MIT",
     "authors": [
+		{
+            "name": "evan45245",
+            "email": "evan45245@take.dog"
+        },
         {
             "name": "Andskur",
             "email": "a.skurlatov@gmail.com",
@@ -18,19 +22,18 @@
     ],
     "require": {
         "php": ">=5.5.9",
-        "laravel/framework": "5.4.* || 5.5.*",
         "guzzlehttp/guzzle": "^6.3"
     },
     "autoload": {
         "psr-4": {
-            "Andskur\\Laracrypto\\": "src/"
+            "evan45245\\Laracrypto\\": "src/"
         }
     },
     "minimum-stability": "dev",
     "extra": {
         "laravel": {
             "providers": [
-                "Andskur\\Laracrypto\\LaracryptoServiceProvider"
+                "evan45245\\Laracrypto\\LaracryptoServiceProvider"
             ]
         }
     }

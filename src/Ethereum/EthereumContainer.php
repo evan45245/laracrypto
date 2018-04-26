@@ -1,6 +1,6 @@
 <?php
 
-namespace Andskur\Laracrypto\Ethereum;
+namespace evan45245\Laracrypto\Ethereum;
 
 use GuzzleHttp\Client;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Andskur\Laracrypto;
+namespace evan45245\Laracrypto;
 
-use Andskur\Laracrypto\Bitcoin\BlockchainContainer as Blockchain;
-use Andskur\Laracrypto\Ethereum\EthereumContainer as Ethereum;
+use evan45245\Laracrypto\Bitcoin\BlockchainContainer as Blockchain;
+use evan45245\Laracrypto\Ethereum\EthereumContainer as Ethereum;
 use Illuminate\Support\ServiceProvider;
 
 class LaracryptoServiceProvider extends ServiceProvider
